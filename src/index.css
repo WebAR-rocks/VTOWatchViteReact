@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  background-color: #333;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.mirrorX {
+  transform: rotateY(180deg);
+}
+
+.loadingModal {
+  display: flex; 
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition-duration: 500ms;
+  position: fixed;
+  background: #1c3e83;
+  color: white;
+  opacity: 1;
+  z-index: 10;
+}
+.loadingModal > div {
+  margin: auto;
+  font-size: 32pt;
+}
+
+.FlipCamButton {
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 12;
+  text-align: center;
+  color: #eee;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.VTOButtons {
+  justify-content: center;
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
