@@ -13,7 +13,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { Environment } from '@react-three/drei'
 
 // 1 neural network approach:
-import NNWrist from '../WebARRocksHand/neuralNets/NN_WRISTBACK_20.json'
+import NNWrist from '../WebARRocksHand/neuralNets/NN_WRISTBACK_23.json'
 
 // This helper is not minified, feel free to customize it:
 import VTOThreeHelper from '../WebARRocksHand/helpers/HandTrackerThreeHelper.js'
@@ -34,7 +34,7 @@ import HDRIEnv from '../assets/hotel_room_1k.hdr'
 
 
 const SETTINGS = {
-  threshold: 0.8, // detection sensitivity, between 0 and 1
+  threshold: 0.98, // detection sensitivity, between 0 and 1
   
   poseLandmarksLabels: [
   // wristRightBottom not working
@@ -56,7 +56,7 @@ const SETTINGS = {
 
   stabilizerOptions: {
     minCutOff: 0.001,
-    beta: 3,
+    beta: 5,
     freqRange: [2, 144],
     forceFilterNNInputPxRange: [2.5, 6],//[1.5, 4],
   },
@@ -245,10 +245,14 @@ const VTO = () => {
       maxHandsDetected: 1,
       landmarksStabilizerSpec: SETTINGS.stabilizerOptions,
       stabilizationSettings: {
-        switchNNErrorThreshold: 0.5
+        switchNNErrorThreshold: 0.2,
+        NNSwitchMask: {
+          isRightHand: true,
+          isFlipped: false
+        }
       },
       scanSettings: {
-        translationScalingFactors: [0.5, 0.5, 1]
+        translationScalingFactors: [0.3,0.3,0.3],
       },
       videoSettings: {
         facingMode: 'user'
